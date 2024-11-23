@@ -5,11 +5,7 @@ using TMPro;
 
 public class QuestSystem : MonoBehaviour
 {
-<<<<<<< HEAD
     public int targetItems = 40;
-=======
-    public int targetItems = 10;
->>>>>>> 17943a0f9a85a203b192ad6db4644cb8f83e8b5c
     private int currentCollected = 0;
 
     public TextMeshProUGUI questProgressText;
@@ -37,11 +33,7 @@ public class QuestSystem : MonoBehaviour
 
     void UpdateQuestUI()
     {
-<<<<<<< HEAD
         questProgressText.text = $"{currentCollected} / {targetItems}";
-=======
-        questProgressText.text = $"Collect Trash: {currentCollected} / {targetItems}";
->>>>>>> 17943a0f9a85a203b192ad6db4644cb8f83e8b5c
     }
 
     void QuestCompleted()

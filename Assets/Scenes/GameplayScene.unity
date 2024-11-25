@@ -3254,7 +3254,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 5
-  m_Sprite: {fileID: 21300000, guid: dcc57754f27756d4cbc4945111143a1c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7a75f3f9f2e968c47821d94eca3aad1e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -3292,7 +3292,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a46f702f74156d44b8ea34f97b3c40f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 7
+  moveSpeed: 10
   groundCheck: {fileID: 0}
 --- !u!50 &489989810
 Rigidbody2D:
@@ -3353,11 +3353,11 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.6, y: 1.5}
+  m_Offset: {x: 0.6, y: -2.62}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 34.7, y: 6.0148926}
+    oldSize: {x: 34.92677, y: 14.820001}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -13050,7 +13050,6 @@ GameObject:
   - component: {fileID: 1746646759}
   - component: {fileID: 1746646758}
   - component: {fileID: 1746646757}
-  - component: {fileID: 1746646760}
   m_Layer: 0
   m_Name: Air Terpisah Atas
   m_TagString: Untagged
@@ -13189,18 +13188,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1746646760
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1746646755}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 796429650dcbbbb4e9a201babacd092e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1754123827
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14247,7 +14234,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75fcb34cfda0cf64cab0b048f858deec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetItems: 3
+  levelCompleteUI: {fileID: 686417147}
+  targetItems: 40
   questProgressText: {fileID: 811652247}
 --- !u!1 &1955571661
 GameObject:

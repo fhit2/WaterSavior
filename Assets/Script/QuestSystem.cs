@@ -5,6 +5,7 @@ using TMPro;
 
 public class QuestSystem : MonoBehaviour
 {
+    [SerializeField] private GameObject levelCompleteUI;
     public int targetItems = 40;
     private int currentCollected = 0;
 
@@ -40,5 +41,15 @@ public class QuestSystem : MonoBehaviour
     {
         questComplete = true;
 
+    }
+
+    public void CheckIfAllObjectsCollected()
+    {
+        // Cek apakah masih ada objek di scene
+        if (FindObjectsOfType<DestroyOnClick>().Length <= 1)
+        {
+            // Tampilkan UI Level Complete
+            levelCompleteUI.SetActive(true);
+        }
     }
 }

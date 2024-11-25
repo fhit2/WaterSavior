@@ -20,9 +20,6 @@ public class PlayerController : MonoBehaviour
         float horizontal = Input.GetAxis("Horizontal");
         Vector2 direction = new Vector2(horizontal, 0);
         transform.Translate(direction * moveSpeed * Time.deltaTime);
-        Debug.Log(Time.deltaTime);
-        // Debug.Log(direction);
-        // transform.position = direction;
         if (horizontal > 0 && !facingRight)
             Flip();
         else if (horizontal < 0 && facingRight)

@@ -6,7 +6,7 @@ public class DestroyOnClick : MonoBehaviour
 {
     [SerializeField] private Transform mainObject; // Referensi ke objek utama
     [SerializeField] private float animationDuration = 0.5f; // Durasi animasi masuk
-    [SerializeField] private GameObject levelCompleteUI; // Referensi ke UI Level Complete
+
 
     private void OnMouseDown()
     {
@@ -54,16 +54,8 @@ public class DestroyOnClick : MonoBehaviour
         Destroy(gameObject);
 
         // Cek apakah semua objek telah diambil
-        CheckIfAllObjectsCollected();
+        questSystem.CheckIfAllObjectsCollected();
     }
 
-    private void CheckIfAllObjectsCollected()
-    {
-        // Cek apakah masih ada objek di scene
-        if (FindObjectsOfType<DestroyOnClick>().Length == 0)
-        {
-            // Tampilkan UI Level Complete
-            levelCompleteUI.SetActive(true);
-        }
-    }
+
 }

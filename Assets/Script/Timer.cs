@@ -7,30 +7,64 @@ using TMPro;
 
 public class Timer : MonoBehaviour
 {
+    [SerializeField]
+    TextMeshProUGUI timerText; // Untuk menampilkan waktu
+    [SerializeField]
+    float remainingTime; // Waktu yang tersisa
+    [SerializeField]
+    GameObject gameOverPanel; // Panel Game Over
 
-    [SerializeField]
-    TextMeshProUGUI timerText;
-    [SerializeField]
-    float remainingTime;
-    
+    void Start()
+    {
+        // Pastikan panel Game Over tidak aktif di awal
+        if (gameOverPanel != null)
+        {
+            gameOverPanel.SetActive(false);
+        }
+    }
+
     void Update()
     {
-    if (remainingTime > 0)
-    {
-    remainingTime -= Time.deltaTime;
+        if (remainingTime > 0)
+        {
+            remainingTime -= Time.deltaTime;
+        }
+        else if (remainingTime <= 0 && !gameOverPanel.activeSelf)
+        {
+            remainingTime = 0;
+            timerText.color = Color.red;
+
+            // Aktifkan panel Game Over
+            if (gameOverPanel != null)
+            {
+                gameOverPanel.SetActive(true);
+            }
+
+            // Opsional: Hentikan waktu atau aksi lainnya
+            Time.timeScale = 0f;
+        }
+
+        // Hitung menit dan detik dari waktu yang tersisa
+        int minutes = Mathf.FloorToInt(remainingTime / 60);
+        int seconds = Mathf.FloorToInt(remainingTime % 60);
+
+        // Perbarui teks timer
+        timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
     }
-    else if (remainingTime < 0)
+
+    public void Retry()
     {
-        remainingTime = 0;
-        timerText.color = Color.red;
+        Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
-
-
-    int minutes = Mathf.FloorToInt(remainingTime / 60);
-    int seconds = Mathf.FloorToInt(remainingTime % 60);
-
-    timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+    public void LoadMenu()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("MainMenu");
     }
 
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
 }

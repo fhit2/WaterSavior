@@ -2,37 +2,39 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SmoothFloat : MonoBehaviour
+public class FloatingTrash : MonoBehaviour
 {
-    public float floatStrength = 0.5f; // Kekuatan mengapung
-    public float floatSpeed = 1f;      // Kecepatan mengapung
+    public float verticalStrength = 1f; // Kekuatan gerakan vertikal (naik-turun)
+    public float verticalSpeed = 0.7f; // Kecepatan gerakan vertikal
+    public float horizontalStrength = 3f; // Kekuatan gerakan horizontal (kanan-kiri)
+    public float horizontalSpeed = 10f; // Kecepatan gerakan horizontal
+    public float randomOffset = 10f; // Offset acak untuk variasi antar objek
+    public float rotationSpeed = 0f; // Kecepatan rotasi untuk efek alami
 
     private Vector3 startPosition;
-    private float horizontalOffset;    // Offset horizontal unik untuk tiap objek
-    private float verticalOffset;      // Offset vertikal unik untuk tiap objek
+    private float randomSeed; // Nilai acak untuk variasi gerakan antar objek
 
     void Start()
     {
+        // Simpan posisi awal objek
         startPosition = transform.position;
-        // Memberikan offset unik menggunakan nilai random
-        horizontalOffset = Random.Range(0f, 100f);
-        verticalOffset = Random.Range(0f, 100f);
+
+        // Berikan nilai acak untuk setiap objek, untuk membuat variasi gerakan
+        randomSeed = Random.Range(0f, 100f);
     }
 
     void Update()
     {
-        // Gerakan naik turun (sama untuk semua, tetapi dengan offset vertikal untuk variasi kecil)
-        float newY = startPosition.y + Mathf.Sin(Time.time * floatSpeed + verticalOffset) * floatStrength;
+        // Gerakan naik-turun (sumbu Y) dengan sedikit variasi
+        float newY = startPosition.y + Mathf.Sin((Time.time + randomSeed) * verticalSpeed) * verticalStrength;
 
-        // Gerakan horizontal kecil dengan offset unik
-        float offsetX = Mathf.Cos(Time.time * floatSpeed + horizontalOffset) * 0.01f;
-        float offsetZ = Mathf.Sin(Time.time * floatSpeed + horizontalOffset) * 0.01f;
+        // Gerakan horizontal (sumbu X) menggunakan Perlin Noise untuk keacakan halus
+        float newX = startPosition.x + (Mathf.PerlinNoise((Time.time + randomSeed) * horizontalSpeed, 0) - 0.5f) * horizontalStrength;
 
-        // Terapkan posisi baru
-        transform.position = new Vector3(
-            transform.position.x + offsetX,
-            newY,
-            transform.position.z + offsetZ
-        );
+        // Terapkan posisi baru dengan gerakan random pada X dan Y
+        transform.position = new Vector3(newX, newY, startPosition.z);
+
+        // Tambahkan rotasi acak untuk memberikan kesan lebih hidup
+        transform.Rotate(Vector3.up * rotationSpeed * Time.deltaTime);
     }
 }

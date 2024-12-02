@@ -12,24 +12,25 @@ public class ScoreManager : MonoBehaviour
 
     private void Awake()
     {
-        // Jika sudah ada instance, hancurkan yang baru
+        
         if (Instance != null)
         {
             Destroy(gameObject);
             return;
         }
         Instance = this;
-        UpdateScoreText(); // Perbarui teks skor saat permainan dimulai
+        UpdateScoreText(); 
     }
 
     public void AddScore()
-    {
-        score++;
-        UpdateScoreText();
-    }
+{
+    score += 10; 
+    UpdateScoreText();
+}
 
     private void UpdateScoreText()
     {
         scoreText.text = score.ToString();
     }
+    
 }

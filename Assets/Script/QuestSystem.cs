@@ -46,10 +46,8 @@ public class QuestSystem : MonoBehaviour
 
     public void CheckIfAllObjectsCollected()
     {
-        // Cek apakah masih ada objek di scene
         if (FindObjectsOfType<DestroyOnClick>().Length <= 1)
         {
-            // Tampilkan UI Level Complete
             levelCompleteUI.SetActive(true);
             Time.timeScale = 0f;
         }
@@ -62,8 +60,9 @@ public class QuestSystem : MonoBehaviour
     public void LoadMenu()
     {
         Time.timeScale = 1f;
-        SceneManager.LoadScene("MainMenu");
+        LevelTransition.Instance.MainMenu();
     }
+
 
 
 }

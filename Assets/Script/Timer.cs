@@ -60,7 +60,7 @@ public class Timer : MonoBehaviour
     public void LoadMenu()
     {
         Time.timeScale = 1f;
-        SceneManager.LoadScene("MainMenu");
+        LevelTransition.Instance.MainMenu();
     }
 
     public void QuitGame()

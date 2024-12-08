@@ -19,12 +19,21 @@ public class PlayerController : MonoBehaviour
     {
         float horizontal = Input.GetAxis("Horizontal");
         Vector2 direction = new Vector2(horizontal, 0);
+        if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D))
+        {
+            AudioManager.Instance.Move();
+        }
+        else if (Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.D))
+        {
+            AudioManager.Instance.StopMove();
+
+        }
         transform.Translate(direction * moveSpeed * Time.deltaTime);
         if (horizontal > 0 && !facingRight)
             Flip();
         else if (horizontal < 0 && facingRight)
             Flip();
-  
+
     }
 
     void Flip()

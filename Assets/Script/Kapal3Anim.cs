@@ -16,6 +16,7 @@ public class Kapal3Anim : MonoBehaviour
         if (Input.GetMouseButtonDown(0)) 
         {  
             anim.SetTrigger("kapal3Shove");
+            AudioManager.Instance.Shove();
         }
     }
 }
